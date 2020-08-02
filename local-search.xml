@@ -4,6 +4,38 @@
   
   
   <entry>
+    <title>second</title>
+    <link href="/2020/08/02/second/"/>
+    <url>/2020/08/02/second/</url>
+    
+    <content type="html"><![CDATA[<p>this is abstract.</p><a id="more"></a><p>this is article text.</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>test</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2020/08/02/Second-test/"/>
+    <url>/2020/08/02/Second-test/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2020/07/30/hello-world/"/>
     <url>/2020/07/30/hello-world/</url>
