@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Estheim Qwu">
+  <meta name="keywords" content="">
+  <title>设计模式 - Qwu&#39;s home</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Reed-EshteimQwu</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-11 12:28">
+      August 11, 2020 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      844 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>单例模式、简单工厂、策略模式、装饰模式与命令模式。</p>
+<a id="more"></a>
+<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><h4 id="单线程情况"><a href="#单线程情况" class="headerlink" title="单线程情况"></a>单线程情况</h4><p>步骤1、新建单例类，并且用private改写其构造方法，使得类无法被其他方法实例化。<br>步骤2、在单例类中声明静态的实例化对象。<br>步骤3、在单例类中新建静态方法，返回一个单例的实例化对象。</p>
+<h4 id="多线程加锁情况"><a href="#多线程加锁情况" class="headerlink" title="多线程加锁情况"></a>多线程加锁情况</h4><p><strong>lock确保当一个线程位于代码的临界区时，另一个线程不再进入临界区。如果其他线程试图进入锁定的代码，则它将一直等待（被阻止），直到该对象被释放。</strong></p>
+<h5 id="双重枷锁"><a href="#双重枷锁" class="headerlink" title="双重枷锁"></a>双重枷锁</h5><h5 id="C-语境"><a href="#C-语境" class="headerlink" title="C#语境"></a>C#语境</h5><pre><code class="hljs csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span>&#123;
+
+    <span class="hljs-comment">// 声明</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Singleton instance;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">readonly</span> <span class="hljs-keyword">object</span> syncRoot = <span class="hljs-keyword">new</span> <span class="hljs-keyword">object</span>();<span class="hljs-comment">// 静态只读</span>
+
+
+    <span class="hljs-comment">// 私有的构造函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span>(<span class="hljs-params"></span>)</span>&#123;
+
+    &#125;
+
+    <span class="hljs-comment">// 实例化</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">GetInstance</span>(<span class="hljs-params"></span>)</span>&#123;
+        <span class="hljs-keyword">if</span>(instance == <span class="hljs-literal">null</span>)&#123;
+            <span class="hljs-keyword">lock</span> (syncRoot) &#123;
+                <span class="hljs-keyword">if</span> (instance == <span class="hljs-literal">null</span>) &#123;
+                    instance = <span class="hljs-keyword">new</span> Singleton();
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<h5 id="JAVA语境"><a href="#JAVA语境" class="headerlink" title="JAVA语境"></a>JAVA语境</h5><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;
+
+    <span class="hljs-comment">// 声明</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Singleton instance;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Object syncRoot = <span class="hljs-keyword">new</span> Object();<span class="hljs-comment">// 静态只读</span>
+
+
+    <span class="hljs-comment">// 私有的构造函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;
+
+    &#125;
+
+    <span class="hljs-comment">// 实例化</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">GetInstance</span><span class="hljs-params">()</span></span>&#123;
+        <span class="hljs-keyword">if</span>(instance == <span class="hljs-keyword">null</span>)&#123;
+            <span class="hljs-keyword">synchronized</span> (syncRoot)&#123; <span class="hljs-comment">// 另一种写法：Synchronize （Singleton.class）</span>
+                <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>) &#123;
+                    instance = <span class="hljs-keyword">new</span> Singleton();
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre>
+<h5 id="PYTHON语境"><a href="#PYTHON语境" class="headerlink" title="PYTHON语境"></a>PYTHON语境</h5><pre><code class="hljs reasonml">import time
+import threading
+
+<span class="hljs-keyword">class</span> <span class="hljs-constructor">Singleton(<span class="hljs-params">object</span>)</span>:
+    _instance_lock = threading.<span class="hljs-constructor">Lock()</span>
+
+    def <span class="hljs-constructor">__init__(<span class="hljs-params">self</span>,<span class="hljs-operator">*</span><span class="hljs-params">args</span>,<span class="hljs-operator">**</span><span class="hljs-params">kwargs</span>)</span>:
+        time.sleep(<span class="hljs-number">1</span>)
+
+    @classmethod
+    def get<span class="hljs-constructor">_instance(<span class="hljs-params">cls</span>,<span class="hljs-operator">*</span><span class="hljs-params">args</span>,<span class="hljs-operator">**</span><span class="hljs-params">kwargs</span>)</span>:
+        <span class="hljs-keyword">if</span> not hasattr(Singleton,&#x27;_instance&#x27;):
+            <span class="hljs-keyword">with</span> <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Singleton</span>.</span><span class="hljs-module"><span class="hljs-identifier">_instance_lock</span>:</span></span>
+                <span class="hljs-keyword">if</span> not hasattr(Singleton,&#x27;_instance&#x27;):
+                    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Singleton</span>.</span><span class="hljs-module"><span class="hljs-identifier">_instance</span> </span></span>= <span class="hljs-constructor">Singleton(<span class="hljs-operator">*</span><span class="hljs-params">args</span>,<span class="hljs-operator">**</span><span class="hljs-params">kwargs</span>)</span>
+
+        return <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Singleton</span>.</span><span class="hljs-module"><span class="hljs-identifier">_instance</span></span></span>
+<span class="hljs-module-access"><span class="hljs-module"></span></span>
+<span class="hljs-module-access"><span class="hljs-module">d</span></span>ef task(arg):
+    obj = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Singleton</span>.</span></span>get<span class="hljs-constructor">_instance(<span class="hljs-params">arg</span>)</span>
+    print(obj)
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>):
+    t = threading.<span class="hljs-constructor">Thread(<span class="hljs-params">target</span>=<span class="hljs-params">task</span>,<span class="hljs-params">args</span>=[<span class="hljs-params">i</span>,])</span>
+    t.start<span class="hljs-literal">()</span>
+
+obj = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Singleton</span>.</span></span>get<span class="hljs-constructor">_instance()</span>
+print(obj)</code></pre>
+
+<h5 id="GOLANG语境"><a href="#GOLANG语境" class="headerlink" title="GOLANG语境"></a>GOLANG语境</h5><pre><code class="hljs smali">type singleton struct &#123;
+&#125;
+
+var<span class="hljs-built_in"> instance </span>*singleton
+var mu sync.Mutex
+
+func GetInstance() *singleton &#123;
+    mu.Lock()
+    defer mu.Unlock()
+
+   <span class="hljs-built_in"> if </span>instance == nil &#123;
+       <span class="hljs-built_in"> instance </span>= &amp;singleton&#123;&#125;     // unnecessary locking<span class="hljs-built_in"> if </span>instance already created
+    &#125;
+   <span class="hljs-built_in"> return </span>instance
+&#125;</code></pre>
+
+<p>另一种：</p>
+<pre><code class="hljs routeros">import (
+    <span class="hljs-string">&quot;sync&quot;</span>
+)
+
+type singleton struct &#123;
+&#125;
+
+var<span class="hljs-built_in"> instance </span>*singleton
+var once sync.Once
+
+func GetInstance() *singleton &#123;
+    once.<span class="hljs-keyword">Do</span>(func() &#123;
+       <span class="hljs-built_in"> instance </span>= &amp;singleton&#123;&#125;
+    &#125;)
+    return instance
+&#125;</code></pre>
+
+<h5 id="C-语境-1"><a href="#C-语境-1" class="headerlink" title="C++语境"></a>C++语境</h5><p>我还没摸过C++，对力量一无所知…<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hackbuteer1/article/details/7460019">https://blog.csdn.net/hackbuteer1/article/details/7460019</a></p>
+<pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lock</span></span>
+<span class="hljs-class">&#123;</span>
+<span class="hljs-keyword">private</span>:       
+    CCriticalSection m_cs;
+<span class="hljs-keyword">public</span>:
+    Lock(CCriticalSection  cs) : m_cs(cs)
+    &#123;
+        m_cs.Lock();
+    &#125;
+    ~Lock()
+    &#123;
+        m_cs.Unlock();
+    &#125;
+&#125;;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>
+<span class="hljs-class">&#123;</span>
+<span class="hljs-keyword">private</span>:
+    Singleton();
+    Singleton(<span class="hljs-keyword">const</span> Singleton &amp;);
+    Singleton&amp; <span class="hljs-keyword">operator</span> = (<span class="hljs-keyword">const</span> Singleton &amp;);
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">static</span> Singleton *<span class="hljs-title">Instantialize</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-keyword">static</span> Singleton *pInstance;
+    <span class="hljs-keyword">static</span> CCriticalSection cs;
+&#125;;
+
+Singleton* Singleton::pInstance = <span class="hljs-number">0</span>;
+
+<span class="hljs-function">Singleton* <span class="hljs-title">Singleton::Instantialize</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(pInstance == <span class="hljs-literal">NULL</span>)
+    &#123;   <span class="hljs-comment">//double check</span>
+        <span class="hljs-function">Lock <span class="hljs-title">lock</span><span class="hljs-params">(cs)</span></span>;           <span class="hljs-comment">//用lock实现线程安全，用资源管理类，实现异常安全</span>
+        <span class="hljs-comment">//使用资源管理类，在抛出异常的时候，资源管理类对象会被析构，析构总是发生的无论是因为异常抛出还是语句块结束。</span>
+        <span class="hljs-keyword">if</span>(pInstance == <span class="hljs-literal">NULL</span>)
+        &#123;
+            pInstance = <span class="hljs-keyword">new</span> Singleton();
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> pInstance;
+&#125;</code></pre>
+
+<h3 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h3><p>步骤1、需要1个工厂类，switch语句判断产品分发情况<br>步骤2、需要具体的产品类与其抽象类。</p>
+<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><p>步骤1、创建策略类的抽象类<br>步骤2、创建具体的策略类与算法。<br>步骤3、创建context类，用于实例化策略类。<br>步骤4、在主函数中告诉context实例应该实例化哪一个策略类。</p>
+<h3 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h3><p><strong>动态地给一个对象添加一些额外的职责，就增加功能而言，比生成子类更加灵活。</strong><br>步骤1、套娃</p>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p><strong>将一个请求封装为一个对象，从而使得可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。</strong></p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Design-Pattern/">Design Pattern</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/02/second/">
+                        <span class="hidden-mobile">Bottom</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "设计模式&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
