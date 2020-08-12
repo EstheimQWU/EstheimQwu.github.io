@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>设计模式2</title>
+    <link href="/2020/08/12/0004/"/>
+    <url>/2020/08/12/0004/</url>
+    
+    <content type="html"><![CDATA[<p>代理模式、原型模式与观察者模式；单一职责原则、开放封闭原则、里氏代换原则/依赖倒转原则</p><a id="more"></a><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p><strong>Proxy:</strong> 为其他对象提供一种代理以控制对这个对象的访问。<br>1、应用场景<br>1.1、远程代理，为一个对象在不同的地址空间提供局部代表。<br>1.2、虚拟代理<br>1.3、智能指引<br>1.4、安全代理</p><p>2、应用步骤<br>2.1、确定代理类、真实实体类及两者的共用接口。<br>2.2、通过继承代理接口分别实现真实实体类与代理类。<br>2.3、若没有实例化RealSubject，则实现RealSubject。</p><pre><code class="hljs routeros">AbstractEntity.csabstract class<span class="hljs-built_in">/interface </span>AbstractEntity&#123;    public abstract void Request();&#125;</code></pre><pre><code class="hljs arduino">Entity.cs<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Entity</span> :</span> AbstractEntity&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Request</span><span class="hljs-params">()</span></span>&#123;        <span class="hljs-built_in">Console</span>.WriteLine(<span class="hljs-string">&quot;ping!&quot;</span>);    &#125;&#125;</code></pre><pre><code class="hljs routeros">Proxy.csclass<span class="hljs-built_in"> Proxy </span>: AbstractEntity&#123;    Entity entity;    public override void Request()&#123;        <span class="hljs-keyword">if</span> ()&#123;            entity = new Entity();        &#125;    &#125;&#125;</code></pre><pre><code class="hljs routeros">static void Main(string[] args)&#123;<span class="hljs-built_in">    Proxy proxy </span>= new Proxy();    proxy.Request();&#125;</code></pre><h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><p><strong>Prototype:</strong> 用原型实例指定创建对象的种类，并通过拷贝这些原型创建新的对象。<br>原型模式就是从一个对象再创建另外一个可定制的对象，过程中不必知晓创建的细节。<br>1、应用场景<br>1.1、在初始化信息不发生变化的前提下，克隆可以隐藏对象创建的细节，又可以提高性能。</p><p>2、应用步骤<br>2.1、在抽象原型类中创建一个原型克隆方法。</p><pre><code class="hljs aspectj"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-function">Prototype <span class="hljs-title">Clone</span><span class="hljs-params">()</span></span>;</code></pre><p>2.2、在具体原型类中实现这个克隆方法，视情况使用深复制与浅复制。</p><h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><h4 id="观察者模式-1"><a href="#观察者模式-1" class="headerlink" title="观察者模式"></a>观察者模式</h4><p><strong>Publish/Subscribe:</strong> 发布订阅模式，让多个观察者对象同时监听某一个主题对象。这个主题对象能够在状态发生变化时，通知所有观察者对象，使得他们自动更新自己。<br>1、应用场景<br>1.1、当一个对象的改变需要同时改变其他对象时，适合使用观察者模式。<br>1.2、用于解除耦合，使得耦合的双方依赖于抽象而非具体的类。<br><img src="https://i.loli.net/2020/08/12/OUexfvhdGXpo1A5.png" alt="Capture.PNG"><br>2、应用步骤<br>2.1、确定观察者与通知者。<br>2.2、建立抽象关系。</p><h4 id="事件委托模式"><a href="#事件委托模式" class="headerlink" title="事件委托模式"></a>事件委托模式</h4><p>1、通过抽象接口替换抽象类达成进一步的耦合降低。<br>2、可通过指针或者delegate实现的特殊类实现。</p><pre><code class="hljs csharp">C<span class="hljs-meta">#</span><span class="hljs-function"><span class="hljs-keyword">delegate</span> <span class="hljs-keyword">void</span> <span class="hljs-title">EventHandler</span>(<span class="hljs-params"></span>)</span>;</code></pre><p><strong>一个委托可以搭载多个方法，所有方法被依次唤起。可以使得委托对象所搭载的方法并不需要属于同一个类。</strong></p><h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h3><p><strong>SRP:</strong> Single responsibility principle，就一个类而言，应该仅有一个引起它变化的原因。</p><p>如果能够想到多于一个的动机去改变一个类，那么这个类就是具有多于一个的职责，应该考虑类的职责分离。</p><h3 id="开放封闭原则"><a href="#开放封闭原则" class="headerlink" title="开放封闭原则"></a>开放封闭原则</h3><p><strong>OPEN-CLOSE:</strong> Open for extension, Closed for modification，软件实体（类，模块，函数）应该是可以拓展却不能够修改的。</p><h3 id="里氏代换原则-依赖倒转原则"><a href="#里氏代换原则-依赖倒转原则" class="headerlink" title="里氏代换原则/依赖倒转原则"></a>里氏代换原则/依赖倒转原则</h3><p><strong>LSP:</strong> Liskov Substitution Principle，如果一个软件实体使用的是一个父类的话，那么它一定也适用于其子类，而且它察觉不出父类对象与子类对象的区别。——<strong>子类型必须能够替换掉它们的父类型。</strong></p><p><strong>DIP:</strong> Dependence Inversion Principle，程序要依赖于抽象接口，不要依赖于具体实现；抽象不应该依赖于细节，细节应该依赖于抽象。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Design Pattern</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>设计模式</title>
     <link href="/2020/08/11/0003/"/>
     <url>/2020/08/11/0003/</url>
